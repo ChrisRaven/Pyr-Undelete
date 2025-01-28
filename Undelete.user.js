@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Undelete
-// @namespace    http://tampermonkey.net/
-// @version      0.1
+// @namespace    Pyr
+// @version      0.1.1
 // @description  Adds 50 steps to bring back removed segments
 // @author       Krzysztof Kruk
 // @match        https://play.pyr.ai/
