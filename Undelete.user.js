@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Undelete
 // @namespace    Pyr
-// @version      0.1.1
+// @version      0.1.2
 // @description  Adds 50 steps to bring back removed segments
 // @author       Krzysztof Kruk
 // @match        https://play.pyr.ai/
@@ -40,7 +40,13 @@ const checkForViewer = setInterval(() => {
   viewer.selectedLayer.layer_.layer_.displayState.segmentationGroupState.value.selectedSegments.changed.add((segId, added) => {
     if (added) return
     if (Array.isArray(segId)) return
+
+    segId = segId.toJSON()
+    if (segId.length !== 18) return
+
     const deleted = getLS()
+    if (deleted && deleted[deleted.length - 1] === segId) return
+
     if (deleted.length >= MAX_LENGTH) {
       deleted.shift()
     }
